@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<body>
+	<h2 align="center" style="color: red;">Public Access</h2>
+	<p align="center">
+		<h:outputText value="#{loginBean.role}" />
+	</p>
+	<h4 align="center">All Products</h4>
+	<table cellpadding="2" cellspacing="2" border="2" align="center">
+		<tr>
+			<th>Product Name</th>
+			<th>product price</th>
+			<th>product Category</th>
+			<th>Product Stock</th>
+		</tr>
+		<h:form>
+			<ui:repeat var="urun" value="#{productListBean.products}">
+				<tr>
+					<td>#{urun.name}</td>
+					<td>#{urun.price}</td>
+					<td>#{urun.category.category}</td>
+					<td>#{urun.stock}</td>
+				</tr>
+			</ui:repeat>
+		</h:form>
+	</table>
+
+	<h:form>
+
+		<h4 align="center">Filter Products</h4>
+
+		<p align="center">
+			<h:selectOneMenu value="#{categoryBean.selectedCategory}">
+
+				<f:selectItems value="#{categoryBean.categories}" var="cat"
+					itemLabel="#{cat}" itemValue="#{cat}" />
+			</h:selectOneMenu>
+			<h:commandButton action="#{categoryBean.filterCategories()}"
+				value="Filter" />
+			<br />
+		</p>
+
+		<table cellpadding="2" cellspacing="2" border="2" align="center">
+			<tr>
+				<th>Product Name</th>
+				<th>product price</th>
+				<th>product Category</th>
+				<th>Product Stock</th>
+			</tr>
+			<h:form>
+				<ui:repeat var="prod" value="#{categoryBean.filtered}">
+					<tr>
+						<td>#{prod.name}</td>
+						<td>#{prod.price}</td>
+						<td>#{prod.category.category}</td>
+						<td>#{prod.stock}</td>
+					</tr>
+				</ui:repeat>
+			</h:form>
+		</table>
+	</h:form>
+	<p align="center">
+		<a href="createdata.xhtml">Back to main page</a>
+	</p>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<body>
+	<h2 align="center" style="color: red;">*** Admin Panel ***</h2>
+	<p align="center">
+		<h:outputText value="#{loginBean.role}" />
+	</p>
+	<h4 align="center">Update Product</h4>
+	<h:form>
+
+
+		<h6 align="center" style="color: red;">Select product id first,
+			select new category, enter details and hit the update button.</h6>
+		<p align="center">
+
+			<h:selectOneMenu value="#{productBean.selectedProductId}">
+
+				<f:selectItems value="#{productBean.products_id}" var="prod"
+					itemLabel="#{prod}" itemValue="#{prod}" />
+			</h:selectOneMenu>
+			<br />
+
+
+			<h:selectOneMenu value="#{productBean.selectedCategory}">
+
+				<f:selectItems value="#{categoryBean.categories_id}" var="cat"
+					itemLabel="#{cat}" itemValue="#{cat}" />
+			</h:selectOneMenu>
+			<br />
+
+
+		</p>
+
+
+		<table cellpadding="2" cellspacing="2" border="2" align="center">
+			<tr>
+				<td>Product Name</td>
+				<td><h:inputText value="#{productBean.product.name}" /></td>
+			</tr>
+			<tr>
+				<td>New Product Price</td>
+				<td><h:inputText value="#{productBean.product.price}" /></td>
+			</tr>
+			<tr>
+				<td>New Product Stock</td>
+				<td><h:inputText value="#{productBean.product.stock}" /></td>
+			</tr>
+
+		</table>
+		<p align="center">
+			<h:commandButton action="#{productBean.updateProduct()}"
+				value="Update Product" />
+		</p>
+	</h:form>
+	<p align="center">
+		<a href="../createdata.xhtml">Back to main page</a>
+	</p>
+</body>
+</html>

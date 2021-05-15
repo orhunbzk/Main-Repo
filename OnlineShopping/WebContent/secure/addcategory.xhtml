@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<body>
+	<h2 align="center" style="color: red;">*** Admin Panel ***</h2>
+	<p align="center">
+		<h:outputText value="#{loginBean.role}" />
+	</p>
+	<h4 align="center">Add New Category</h4>
+	<h:form>
+		<table cellpadding="2" cellspacing="2" border="2" align="center">
+			<tr>
+				<td>Product category Name</td>
+				<td><h:inputText value="#{categoryBean.category.category}" />
+				</td>
+			</tr>
+		</table>
+		<p align="center">
+			<h:commandButton action="#{categoryBean.saveCategory()}"
+				value="Save Category" />
+		</p>
+
+
+
+	</h:form>
+	<p align="center">
+		<a href="../createdata.xhtml">Back to main page</a>
+	</p>
+</body>
+</html>

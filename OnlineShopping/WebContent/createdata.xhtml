@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<body>
+	<h4 align="center">Sample Online Shopping System With REST 
+		Services</h4>
+	<p align="center" style="color: orange;">Create a test data in
+		order to login.</p>
+	<p align="center" style="color: green;">Admin privileged account
+		credentials</p>
+	<p align="center" style="color: red;">Username: user</p>
+	<p align="center" style="color: red;">Password: 12345</p>
+
+	<h:form>
+
+		<p align="center">
+			<h:commandButton action="#{createDataBean.createData()}"
+				value="Create Test Data" />
+		</p>
+		<p align="center">
+			<a href="login.xhtml">Login (FOR EVERYONE)</a>
+		</p>
+		<p align="center">
+			<a href="categorylist.xhtml">List All Categories (FOR EVERYONE)</a>
+		</p>
+		<p align="center">
+			<a href="productlist.xhtml">List Products (FOR EVERYONE)</a>
+		</p>
+		<p align="center">
+			<a href="secure/addproduct.xhtml">Add Product (FOR ADMIN)</a>
+		</p>
+		<p align="center">
+			<a href="secure/addcategory.xhtml">Add Category (FOR ADMIN)</a>
+		</p>
+		<p align="center">
+			<a href="secure/updateproduct.xhtml">Update Product (FOR ADMIN)</a>
+		</p>
+		<p align="center">
+			<a href="secure/updatecategory.xhtml">Update Category (FOR ADMIN)</a>
+		</p>
+	</h:form>
+</body>
+</html>

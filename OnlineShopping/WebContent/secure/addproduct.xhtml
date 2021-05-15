@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<body>
+	<h:form>
+		<h2 align="center" style="color: red;">*** Admin Panel ***</h2>
+		<h4 align="center">Add New Product to Selected Category</h4>
+
+		<h6 align="center" style="color: red;">Select Category id first,
+			Enter product details and hit the save button.</h6>
+		<p align="center">
+			<h:selectOneMenu value="#{productBean.selectedCategory}">
+
+				<f:selectItems value="#{categoryBean.categories_id}" var="cat"
+					itemLabel="#{cat}" itemValue="#{cat}" />
+			</h:selectOneMenu>
+			<br />
+		</p>
+
+
+		<table cellpadding="2" cellspacing="2" border="2" align="center">
+			<tr>
+				<td>Product Name</td>
+				<td><h:inputText value="#{productBean.product.name}" /></td>
+			</tr>
+			<tr>
+				<td>Product Price</td>
+				<td><h:inputText value="#{productBean.product.price}" /></td>
+			</tr>
+			<tr>
+				<td>Product Stock</td>
+				<td><h:inputText value="#{productBean.product.stock}" /></td>
+			</tr>
+		</table>
+		<p align="center">
+			<h:commandButton action="#{productBean.saveProduct()}"
+				value="Save Product" />
+		</p>
+	</h:form>
+
+	<h4 align="center">Manage All Products</h4>
+	<table cellpadding="2" cellspacing="2" border="2" align="center">
+		<tr>
+			<th>Product Name</th>
+			<th>product price</th>
+			<th>product Category</th>
+			<th>Product Stock</th>
+			<th>Delete</th>
+		</tr>
+		<h:form>
+			<ui:repeat var="prod" value="#{productListBean.products}">
+				<tr>
+					<td>#{prod.name}</td>
+					<td>#{prod.price}</td>
+					<td>#{prod.category.category}</td>
+					<td>#{prod.stock}</td>
+					<td><h:commandButton
+							action="#{productListBean.delete(urun.id)}" value="Delete" /></td>
+				</tr>
+			</ui:repeat>
+		</h:form>
+	</table>
+	<h:form>
+
+		<h4 align="center">Filter Products by Category Name</h4>
+
+		<p align="center">
+			<h:selectOneMenu value="#{categoryBean.selectedCategory}">
+
+				<f:selectItems value="#{categoryBean.categories}" var="cat"
+					itemLabel="#{cat}" itemValue="#{cat}" />
+			</h:selectOneMenu>
+			<h:commandButton action="#{categoryBean.filterCategories()}"
+				value="Filter" />
+			<br />
+		</p>
+
+		<table cellpadding="2" cellspacing="2" border="2" align="center">
+			<tr>
+				<th>Product Name</th>
+				<th>product price</th>
+				<th>product Category</th>
+				<th>Product Stock</th>
+			</tr>
+			<h:form>
+				<ui:repeat var="prod" value="#{categoryBean.filtered}">
+					<tr>
+						<td>#{prod.name}</td>
+						<td>#{prod.price}</td>
+						<td>#{prod.category.category}</td>
+						<td>#{prod.stock}</td>
+					</tr>
+				</ui:repeat>
+			</h:form>
+		</table>
+		<h4 align="center">Logout</h4>
+		<p align="center">
+			<h:commandButton action="#{loginBean.logout()}" value="Logout" />
+		</p>
+	</h:form>
+	<p align="center">
+		<a href="../createdata.xhtml">Back to main page</a>
+	</p>
+</body>
+</html>
